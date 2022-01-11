@@ -1,9 +1,11 @@
 import React from 'react'
 
+
 class Counter extends React.Component {
   
   state = {
     count: 1,
+    id: 1
     // imageUrl: 'https://picsum.photos/100'
     
   };
@@ -12,7 +14,7 @@ class Counter extends React.Component {
   //   super()
   //   this.handleIncrement = this.handleIncrement.bind(this)
   // }
-   handleIncrement = () => {
+   handleIncrement = (id) => { 
     this.setState({ count:this.state.count + 1 })
   }
    handleDecrement = () => {
@@ -24,7 +26,7 @@ class Counter extends React.Component {
       <div>
         {/* <img className="img m-4" src={this.state.imageUrl} alt="picsum" /> */}
         <span className={this.getBadgeClasses()} style={{fontSize: 17}}>{this.formatCount()}</span>
-        <button onClick={this.handleIncrement} className="btn btn-success btn-sm">Increment</button>
+        <button onClick={ () => this.handleIncrement(id)} className="btn btn-success btn-sm">Increment</button>
         <button onClick={this.handleDecrement} className="btn btn-danger btn-sm m-4">Decrement</button>
       </div>
      
