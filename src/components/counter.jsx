@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 class Counter extends React.Component {
   
   state = {
@@ -19,11 +18,13 @@ class Counter extends React.Component {
    handleDecrement = () => {
     this.setState({ value:this.state.value - 1 })
   }
-  
+
+ 
 
   render() {
     return (
       <div>
+        
         {/* <img className="img m-4" src={this.state.imageUrl} alt="picsum" /> */}
         {this.props.children}
         <span className={this.getBadgeClasses()} style={{fontSize: 17}}>{this.formatCount()}</span>

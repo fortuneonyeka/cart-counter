@@ -18,9 +18,9 @@ class Counters extends React.Component {
     this.setState({counters:data}) 
     
   }
+
   render() { 
     return <div>
-      
       {this.state.counters.map(counter => <Counter key={counter.id} counter={counter} onDelete={this.handleDelete}><h4>Product:{counter.id}</h4></Counter>)}
     </div>;
   }
