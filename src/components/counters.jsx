@@ -11,6 +11,8 @@ class Counters extends React.Component {
     ]
   }
   
+  //RULL OF THUMB:ONLY THE COMPONENTS THAT OWNS A STATE CAN MODIFY IT
+  //HENCE WE RAISED THE EVENT HANDLE HERE PASS IT AS PROP TO counter.js
   handleDelete = (id) => {
     const data = this.state.counters.filter(item => item.id !== id)
     this.setState({counters:data}) 
