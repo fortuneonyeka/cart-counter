@@ -11,6 +11,21 @@ class Counters extends React.Component {
     ]
   }
   
+  handleIncrement = (counter) => { 
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter)
+    counters[index] = { ...counter }
+    counters[index].value ++
+    this.setState({counters})
+  }
+  //  handleDecrement = (counter) => {
+  //   const dcounters = [...this.state.counters];
+  //   const index = dcounters.indexOf(counter)
+  //   dcounters[index] = { ...counter }
+  //   dcounters[index].value -=
+  //   this.setState({dcounters})
+  // }
+
   //RULL OF THUMB:ONLY THE COMPONENTS THAT OWNS A STATE CAN MODIFY IT
   //HENCE WE RAISED THE EVENT HANDLE HERE PASS IT AS PROP TO counter.js
   handleDelete = (id) => {
@@ -19,9 +34,19 @@ class Counters extends React.Component {
     
   }
 
+  handleReset = () => {
+    const counters = this.state.counters.map(i => {
+      i.value = 0;
+      return i;
+    });
+    this.setState({counters})
+  }
+
   render() { 
     return <div>
-      {this.state.counters.map(counter => <Counter key={counter.id} counter={counter} onDelete={this.handleDelete}><h4>Product:{counter.id}</h4></Counter>)}
+      <button onClick={this.handleReset} className="btn btn-primary btn-sm m-2">Reset</button>
+
+      {this.state.counters.map(counter => <Counter key={counter.id} counter={counter} onDelete={this.handleDelete} onIncrememnt={this.handleIncrement} ><h4>Product:{counter.id}</h4></Counter>)}
     </div>;
   }
 }
